@@ -1,28 +1,22 @@
 .sidenav-container {
-    height: 100%;
-  }
-  
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px; 
+}
+
+
+@media (max-width: 600px) {
   .sidenav {
-    width: 200px; /* or whatever width you prefer */
+    width: 100%; 
+    top: 56px;
   }
-  
-  /* Styles for list items, etc. */
-  mat-nav-list a {
-    color: rgba(0, 0, 0, 0.87);
-    text-decoration: none;
-    line-height: 20px;
-    padding: 10px;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 600px) {
-    .sidenav {
-      width: 100%;
-      position: fixed;
-      height: 100%;
-      top: 0;
-      bottom: 0;
-      z-index: 1000;
-    }
-  }
-  
+}
+
+mat-nav-list a {
+  color: rgba(0, 0, 0, 0.87);
+  text-decoration: none;
+  line-height: 20px;
+  padding: 10px;
+}
