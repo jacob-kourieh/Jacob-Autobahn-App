@@ -18,6 +18,7 @@ import { RoadConditionsComponent } from './road-conditions/road-conditions.compo
 import { MapComponent } from './map/map.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ContactComponent } from './contact/contact.component';
     MatSidenavModule,
     MatListModule,
     MatButtonModule,
+    LayoutModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],
