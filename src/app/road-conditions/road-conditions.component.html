@@ -1,1 +1,62 @@
-<p>road-conditions works!</p>
+<div class="road-conditions-container">
+    <h2 class="title">Road Conditions</h2>
+    <p class="description">
+        Explore current road conditions on various Autobahns. Select a road to view detailed information.
+    </p>
+
+    <!-- Road Selection -->
+    <div class="select-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Select Road</mat-label>
+            <mat-select [(ngModel)]="selectedRoad" required (ngModelChange)="onSelectRoad()">
+                <mat-option *ngFor="let road of roads" [value]="road">{{ road }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <!-- Filter Input - Shown Only After Road Selection -->
+    <div *ngIf="selectedRoad" class="filter-container">
+        <p class="filter-description">Filter by road name:</p>
+        <mat-form-field appearance="fill">
+            <mat-label>Filter Road Name</mat-label>
+            <input type="text" matInput [formControl]="roadNameControl" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onRoadNameSelect($event.option.value)">
+                <ng-container *ngIf="filteredRoadNames | async as names">
+                    <mat-option *ngIf="names.length === 1 && names[0] === 'No matches found'" disabled>
+                        {{ names[0] }}
+                    </mat-option>
+                    <ng-container *ngFor="let name of names; let i = index">
+                        <mat-option *ngIf="name !== 'No matches found'" [value]="name">
+                            {{ name }}
+                        </mat-option>
+                        <mat-divider *ngIf="name !== 'No matches found' && i < names.length - 1"></mat-divider>
+                    </ng-container>
+                </ng-container>
+            </mat-autocomplete>
+
+        </mat-form-field>
+        <ng-template #notFound>
+            <span class="no-match">No matches found</span>
+        </ng-template>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Display Filtered Road Conditions -->
+    <div *ngIf="selectedRoad">
+        <div *ngIf="filteredConditions.length > 0" class="conditions-grid">
+            <div class="condition" *ngFor="let condition of filteredConditions">
+                <mat-card>
+                    <mat-card-title>{{ condition.title }}</mat-card-title>
+                    <mat-card-content>
+                        <p>{{ condition.description.join(' ') }}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+        <!-- No Data Template -->
+        <div *ngIf="filteredConditions.length == 0">
+            <p>No road conditions data available.</p>
+        </div>
+    </div>
+</div>
