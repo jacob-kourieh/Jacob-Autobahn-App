@@ -17,4 +17,18 @@ export class ApiService {
   getRoadConditions(roadId: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${roadId}/services/roadworks`);
   }
+
+  getWebcams(roadId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${roadId}/services/webcam`);
+  }
+
+  getParkingLorry(roadId: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${roadId}/services/parking_lorry`);
+  }
+
+  getElectricChargingStations(roadId: string): Observable<any> {
+    return this.http.get(
+      `${this.baseUrl}/${roadId}/services/electric_charging_station`
+    );
+  }
 }

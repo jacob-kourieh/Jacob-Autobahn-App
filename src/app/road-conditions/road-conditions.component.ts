@@ -26,28 +26,25 @@ export class RoadConditionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiService.getRoads().subscribe(
-      (data) => {
+    this.apiService.getRoads().subscribe({
+      next: (data) => {
         this.roads = data.roads;
       },
-      (error) => {
-        console.error('Error fetching roads:', error);
-      }
-    );
+      error: (error) => console.error('Error fetching roads:', error),
+    });
   }
 
   onSelectRoad(): void {
     if (this.selectedRoad) {
-      this.apiService.getRoadConditions(this.selectedRoad).subscribe(
-        (data) => {
+      this.apiService.getRoadConditions(this.selectedRoad).subscribe({
+        next: (data) => {
           this.roadConditions = data.roadworks;
           this.filteredConditions = [...this.roadConditions];
           this.roadNameControl.setValue('');
         },
-        (error) => {
-          console.error('Error fetching road conditions:', error);
-        }
-      );
+        error: (error) =>
+          console.error('Error fetching road conditions:', error),
+      });
     }
   }
 
