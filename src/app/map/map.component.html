@@ -1,1 +1,34 @@
-<p>map works!</p>
+<div class="map-container">
+    <h2 class="title">Highway Map</h2>
+    <p>View parking lorries and electric charging stations on the highway.</p>
+
+    <!-- Road Selection -->
+    <div class="select-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Select Road</mat-label>
+            <mat-select [formControl]="selectedRoad" required>
+                <mat-option *ngFor="let road of roads" [value]="road">{{ road }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <!-- Buttons to Load Data -->
+    <div class="button-group">
+        <button mat-raised-button [class.active]="activeButton === 'parkingLorries'" (click)="loadParkingLorries()"
+            [disabled]="!selectedRoad.value">
+            Show Parking Lorries
+        </button>
+        <button mat-raised-button [class.active]="activeButton === 'chargingStations'"
+            (click)="loadElectricChargingStations()" [disabled]="!selectedRoad.value">
+            Show Charging Stations
+        </button>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Map Container -->
+    <div id="map" class="map"></div>
+
+    <!-- No Data Template -->
+    <p class="no-data" *ngIf="isDataLoaded && markers.length == 0">No data available for the selected road.</p>
+</div>
