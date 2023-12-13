@@ -14,7 +14,7 @@ export class ApiService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  getRoadConditions(roadId: string): Observable<any> {
+  getRoadWorks(roadId: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${roadId}/services/roadworks`);
   }
 
