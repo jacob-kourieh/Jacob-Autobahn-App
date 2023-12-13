@@ -12,8 +12,8 @@ import { map, startWith } from 'rxjs/operators';
 export class RoadConditionsComponent implements OnInit {
   roads: string[] = [];
   selectedRoad!: string;
-  roadConditions: any[] = [];
-  filteredConditions: any[] = [];
+  roadWorks: any[] = [];
+  filteredWorks: any[] = [];
 
   roadNameControl = new FormControl();
   filteredRoadNames: Observable<string[]>;
@@ -36,10 +36,10 @@ export class RoadConditionsComponent implements OnInit {
 
   onSelectRoad(): void {
     if (this.selectedRoad) {
-      this.apiService.getRoadConditions(this.selectedRoad).subscribe({
+      this.apiService.getRoadWorks(this.selectedRoad).subscribe({
         next: (data) => {
-          this.roadConditions = data.roadworks;
-          this.filteredConditions = [...this.roadConditions];
+          this.roadWorks = data.roadworks;
+          this.filteredWorks = [...this.roadWorks];
           this.roadNameControl.setValue('');
         },
         error: (error) =>
@@ -50,7 +50,7 @@ export class RoadConditionsComponent implements OnInit {
 
   private _filterRoadNames(value: string): string[] {
     const filterValue = value.toLowerCase();
-    let filtered = this.roadConditions
+    let filtered = this.roadWorks
       .map((condition) => condition.title)
       .filter((title) => title.toLowerCase().includes(filterValue));
 
@@ -63,9 +63,9 @@ export class RoadConditionsComponent implements OnInit {
 
   onRoadNameSelect(selectedName: string): void {
     if (selectedName === 'No matches found') {
-      this.filteredConditions = [];
+      this.filteredWorks = [];
     } else {
-      this.filteredConditions = this.roadConditions.filter(
+      this.filteredWorks = this.roadWorks.filter(
         (condition) => condition.title === selectedName
       );
     }
