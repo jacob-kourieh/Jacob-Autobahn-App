@@ -2,12 +2,12 @@
   <!-- Side navigation panel -->
   <mat-sidenav #sidenav [mode]="isHandset ? 'over' : 'side'" [opened]="!isHandset" class="sidenav">
     <div class="sidenav-header">
-      <h1 class="sidenav-title">{{ title }}</h1>
+      <h1 class="sidenav-title" (click)="goHome()">{{ title }}</h1>
     </div>
 
     <mat-nav-list>
       <div mat-list-item *ngFor="let link of links" [routerLink]="link.path"
-        (click)="isHandset ? sidenav.toggle() : null" class="nav-item">
+        (click)="isHandset ? sidenav.toggle() : null" [class.active-item]="isActive(link.path)" class="nav-item">
         <img [src]="link.icon" [alt]="link.label" class="icon">
         <span class="nav-text">{{ link.label }}</span>
       </div>
@@ -26,7 +26,7 @@
         <mat-icon>menu</mat-icon>
       </button>
 
-      <h3 class="sidenav-title">{{ title }}</h3>
+      <h3 class="sidenav-title" (click)="goHome()">{{ title }}</h3>
     </mat-toolbar>
 
     <router-outlet></router-outlet>
