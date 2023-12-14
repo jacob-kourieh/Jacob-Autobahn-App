@@ -8,7 +8,6 @@
 
 .sidenav-header {
   padding: 16px;
-  text-align: center;
 }
 
 .sidenav-title {
@@ -16,6 +15,7 @@
   font-weight: bold;
   font-style: italic;
   font-family: cursive;
+  cursor: pointer;
 }
 
 .nav-item {
@@ -60,6 +60,10 @@
 
 .footer-name-link:hover {
   text-decoration: underline;
+}
+
+.active-item {
+  background-color: #e0e0e0;
 }
 
 @media (max-width: 600px) {

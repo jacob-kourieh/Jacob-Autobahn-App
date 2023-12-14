@@ -23,8 +23,7 @@
   margin: 0 auto;
 }
 
-.map-container .divider {
-  border-top: 1px solid #eee;
+.custom-divider {
   margin: 20px 0;
 }
 

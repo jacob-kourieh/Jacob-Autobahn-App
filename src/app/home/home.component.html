@@ -1,4 +1,19 @@
 <div class="home-container">
-    <h1>Welcome to the Jacob-Autobahn-App</h1>
-    <p>This is the homepage of the app where you can navigate to different sections using the sidebar.</p>
+    <h2 class="title">Welcome to the Jacob-Autobahn-App</h2>
+    <p class="description">This is the homepage of the app where you can navigate to different sections using the
+        sidebar.</p>
+
+    <mat-divider class="custom-divider"></mat-divider>
+
+    <!-- Grid for Features -->
+    <div class="features-grid">
+        <div *ngFor="let feature of features" class="feature-tile">
+            <a [routerLink]="feature.path" class="feature-link">
+                <div class="feature-content">
+                    <img [src]="feature.icon" alt="{{ feature.label }}" class="feature-icon">
+                    <p class="feature-label">{{ feature.label }}</p>
+                </div>
+            </a>
+        </div>
+    </div>
 </div>

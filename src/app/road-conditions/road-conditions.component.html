@@ -1,8 +1,6 @@
 <div class="road-conditions-container">
     <h2 class="title">Road Conditions</h2>
-    <p class="description">
-        Explore current road conditions on various Autobahns. Select a road to view detailed information.
-    </p>
+    <p>Explore current road conditions on various Autobahns. Select a road to view detailed information.</p>
 
     <!-- Road Selection -->
     <div class="select-container">
@@ -40,7 +38,7 @@
         </ng-template>
     </div>
 
-    <hr class="divider" />
+    <mat-divider class="custom-divider"></mat-divider>
 
     <!-- Display Filtered Road Conditions -->
     <div *ngIf="selectedRoad">
