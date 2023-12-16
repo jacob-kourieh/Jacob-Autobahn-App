@@ -17,18 +17,18 @@
 .features-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 30px; 
+  grid-gap: 30px;
 }
 
 .feature-link {
   text-decoration: none;
-  color: black; 
+  color: black;
 }
 
 .feature-icon {
-  width: 200px; 
-  height: 200px; 
-  object-fit: cover; 
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
   margin-bottom: 8px;
 }
 
@@ -36,10 +36,14 @@
   font-size: 1.3rem;
 }
 
-
-/* Responsive adjustments */
+/* Responsive Styles */
 @media (max-width: 600px) {
   .features-grid {
-  grid-template-columns: 1fr; 
+    grid-template-columns: 1fr;
+  }
+
+  .feature-icon {
+    width: 150px;
+    height: 150px;
   }
 }
