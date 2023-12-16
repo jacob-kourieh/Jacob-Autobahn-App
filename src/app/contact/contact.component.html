@@ -1,1 +1,28 @@
-<p>contact works!</p>
+<div class="contact-container">
+    <h2 class="title">Contact Us</h2>
+    <p class="info-text">If you have any questions or just want to say hello, use the form below to get in touch!</p>
+
+    <mat-divider class="custom-divider"></mat-divider>
+
+    <!-- Contact form by Emailjs -->
+    <form (ngSubmit)="sendEmail($event)" #contactForm="ngForm" class="contact-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput type="text" name="from_name" ngModel required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" name="reply_to" ngModel required email>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Message</mat-label>
+            <textarea matInput name="message" ngModel required></textarea>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.form.valid || isSendingEmail">
+            {{ isSendingEmail ? 'Sending...' : 'Send' }}
+        </button>
+    </form>
+</div>
