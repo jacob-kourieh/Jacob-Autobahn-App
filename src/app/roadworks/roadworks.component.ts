@@ -5,11 +5,11 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-road-conditions',
-  templateUrl: './road-conditions.component.html',
-  styleUrls: ['./road-conditions.component.css'],
+  selector: 'app-roadworks',
+  templateUrl: './roadworks.component.html',
+  styleUrls: ['./roadworks.component.css'],
 })
-export class RoadConditionsComponent implements OnInit {
+export class RoadWorksComponent implements OnInit {
   roads: string[] = [];
   selectedRoad!: string;
   roadWorks: any[] = [];
@@ -69,5 +69,11 @@ export class RoadConditionsComponent implements OnInit {
         (condition) => condition.title === selectedName
       );
     }
+  }
+
+  clearFilter(event: MouseEvent): void {
+    event.stopPropagation();
+    this.roadNameControl.setValue('');
+    this.filteredWorks = [...this.roadWorks];
   }
 }

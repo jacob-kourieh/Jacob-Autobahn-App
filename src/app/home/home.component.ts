@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   features = [
     {
-      path: '/road-conditions',
+      path: '/roadworks',
       label: 'Roadworks',
       icon: 'assets/roadworks_img.jpg',
     },

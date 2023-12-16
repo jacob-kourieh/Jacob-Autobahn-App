@@ -20,7 +20,7 @@ export class AppComponent {
   links = [
     { path: '/', label: 'Home', icon: 'assets/home.png' },
     {
-      path: '/road-conditions',
+      path: '/roadworks',
       label: 'Roadworks',
       icon: 'assets/roadwork.png',
     },
