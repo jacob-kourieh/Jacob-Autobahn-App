@@ -34,12 +34,12 @@ export class MapComponent implements OnInit {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
+  // Initializes the map when the component is loaded.
   async ngOnInit(): Promise<void> {
     if (isPlatformBrowser(this.platformId)) {
       this.L = await import('leaflet');
       this.initializeMap();
       this.loadRoads();
-
       this.selectedRoad.valueChanges.subscribe((value) => {
         if (value) {
           this.activeButton = null;
@@ -50,6 +50,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  // Sets up the map with default settings and tiles.
   private initializeMap(): void {
     const defaultIcon = this.L.icon({
       iconRetinaUrl:
@@ -65,14 +66,15 @@ export class MapComponent implements OnInit {
     });
     this.L.Marker.prototype.options.icon = defaultIcon;
 
+    // Set the initial view of the map to a location in Germany (coordinates for central Germany) with a zoom level of 5.
     this.map = this.L.map('map').setView([51.1657, 10.4515], 5);
-
     this.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
         '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(this.map);
   }
 
+  // Fetches the list of roads from the API.
   loadRoads(): void {
     this.apiService.getRoads().subscribe({
       next: (data) => {
@@ -84,6 +86,7 @@ export class MapComponent implements OnInit {
     });
   }
 
+  // Removes all markers from the map.
   clearMarkers(): void {
     if (this.markers && this.markers.length) {
       this.markers.forEach((marker) => marker.remove());
@@ -91,6 +94,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  // Zooms into the map and sets markers based on provided data.
   private zoomAndSetMarkers(data: any[], coordinateKey: string): void {
     if (data.length > 0) {
       const firstLocation = data[0][coordinateKey];
@@ -98,7 +102,6 @@ export class MapComponent implements OnInit {
         [parseFloat(firstLocation.lat), parseFloat(firstLocation.long)],
         7
       );
-
       this.markers = data.map((item) => {
         const marker = this.L.marker([
           parseFloat(item[coordinateKey].lat),
@@ -112,6 +115,7 @@ export class MapComponent implements OnInit {
     this.isDataLoaded = true;
   }
 
+  // Loads parking lorries on the map for the selected road.
   loadParkingLorries(): void {
     this.activeButton = 'parkingLorries';
     if (this.selectedRoad.value) {
@@ -128,6 +132,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  // Loads electric charging stations on the map for the selected road.
   loadElectricChargingStations(): void {
     this.activeButton = 'chargingStations';
     if (this.selectedRoad.value) {
@@ -149,6 +154,7 @@ export class MapComponent implements OnInit {
     }
   }
 
+  // Creates HTML content for a popup on the map markers.
   private createPopupContent(
     item: ParkingLorry | ElectricChargingStation
   ): string {

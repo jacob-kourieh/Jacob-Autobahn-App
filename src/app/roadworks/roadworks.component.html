@@ -19,12 +19,13 @@
             <mat-label>Search by Place/Road name</mat-label>
             <input type="text" matInput [formControl]="roadNameControl" [matAutocomplete]="auto">
 
-            <!-- Clear filter button -->
+            <!-- Button to clear the filter -->
             <button matSuffix mat-icon-button aria-label="Clear" *ngIf="roadNameControl.value"
                 (click)="clearFilter($event)">
                 <mat-icon>close</mat-icon>
             </button>
 
+            <!-- Autocomplete dropdown -->
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onRoadNameSelect($event.option.value)">
                 <ng-container *ngIf="filteredRoadNames | async as names">
                     <mat-option *ngIf="names.length === 1 && names[0] === 'No matches found'" disabled>
@@ -36,15 +37,10 @@
                         </mat-option>
                         <mat-divider *ngIf="name !== 'No matches found' && i < names.length - 1"
                             [ngStyle]="{ 'margin-top.px': 2, 'margin-bottom.px': 2 }"></mat-divider>
-
                     </ng-container>
                 </ng-container>
             </mat-autocomplete>
-
         </mat-form-field>
-        <ng-template #notFound>
-            <span class="no-match">No matches found</span>
-        </ng-template>
     </div>
 
     <mat-divider class="custom-divider"></mat-divider>
