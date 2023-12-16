@@ -66,10 +66,11 @@
   background-color: #e0e0e0;
 }
 
+/* Responsive Styles */
 @media (max-width: 600px) {
   .sidenav {
     width: 100%; 
-    top: 56px;
+    height: 100%;
   }
 
   .icon {

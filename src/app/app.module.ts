@@ -13,12 +13,13 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './home/home.component';
-import { RoadConditionsComponent } from './road-conditions/road-conditions.component';
+import { RoadWorksComponent } from './roadworks/roadworks.component';
 import { MapComponent } from './map/map.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LayoutModule } from '@angular/cdk/layout';
 
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -30,7 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     HomeComponent,
-    RoadConditionsComponent,
+    RoadWorksComponent,
     MapComponent,
     AboutComponent,
     ContactComponent,
@@ -52,6 +53,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatAutocompleteModule,
     MatCardModule,
     FormsModule,
+    MatGridListModule,
     ReactiveFormsModule,
   ],
   providers: [provideHttpClient(withFetch())],

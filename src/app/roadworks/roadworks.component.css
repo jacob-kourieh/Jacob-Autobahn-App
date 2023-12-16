@@ -1,4 +1,4 @@
-.road-conditions-container {
+.roadworks-container {
   text-align: center;
   max-width: 800px;
   margin: 0 auto;
@@ -21,6 +21,7 @@
 
 .condition mat-card {
   padding: 10px;
+  border: 1px solid #e0e0e0;
 }
 
 .select-container mat-form-field,
@@ -29,7 +30,7 @@
 }
 
 .custom-divider {
-  margin: 20px 0;
+  margin: 30px 0;
 }
 
 .conditions-grid {

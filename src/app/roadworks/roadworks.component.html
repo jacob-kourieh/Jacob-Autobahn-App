@@ -1,6 +1,6 @@
-<div class="road-conditions-container">
-    <h2 class="title">Road Conditions</h2>
-    <p>Explore current road conditions on various Autobahns. Select a road to view detailed information.</p>
+<div class="roadworks-container">
+    <h2 class="title">Roadworks Info</h2>
+    <p>Find out about roadworks on different Autobahns. Start by selecting a road.</p>
 
     <!-- Road Selection -->
     <div class="select-container">
@@ -14,10 +14,17 @@
 
     <!-- Filter Input - Shown Only After Road Selection -->
     <div *ngIf="selectedRoad" class="filter-container">
-        <p class="filter-description">Filter by road name:</p>
+        <p class="filter-description">Narrow down your search:</p>
         <mat-form-field appearance="fill">
-            <mat-label>Filter Road Name</mat-label>
+            <mat-label>Search by Place/Road name</mat-label>
             <input type="text" matInput [formControl]="roadNameControl" [matAutocomplete]="auto">
+
+            <!-- Clear filter button -->
+            <button matSuffix mat-icon-button aria-label="Clear" *ngIf="roadNameControl.value"
+                (click)="clearFilter($event)">
+                <mat-icon>close</mat-icon>
+            </button>
+
             <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onRoadNameSelect($event.option.value)">
                 <ng-container *ngIf="filteredRoadNames | async as names">
                     <mat-option *ngIf="names.length === 1 && names[0] === 'No matches found'" disabled>
@@ -27,7 +34,9 @@
                         <mat-option *ngIf="name !== 'No matches found'" [value]="name">
                             {{ name }}
                         </mat-option>
-                        <mat-divider *ngIf="name !== 'No matches found' && i < names.length - 1"></mat-divider>
+                        <mat-divider *ngIf="name !== 'No matches found' && i < names.length - 1"
+                            [ngStyle]="{ 'margin-top.px': 2, 'margin-bottom.px': 2 }"></mat-divider>
+
                     </ng-container>
                 </ng-container>
             </mat-autocomplete>
@@ -55,7 +64,7 @@
 
         <!-- No Data Template -->
         <div *ngIf="filteredWorks.length == 0">
-            <p>No road conditions data available.</p>
+            <p>No data available for the selected road.</p>
         </div>
     </div>
 </div>
