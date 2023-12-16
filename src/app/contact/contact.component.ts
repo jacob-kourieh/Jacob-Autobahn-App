@@ -10,10 +10,12 @@ import { emailJsConfig } from '../../environments/emailjs-config';
 export class ContactComponent {
   isSendingEmail = false;
 
+  // Initializes emailjs with the provided user ID.
   constructor() {
     emailjs.init(emailJsConfig.user_id);
   }
 
+  // Handles the email sending process when the form is submitted.
   sendEmail(event: Event) {
     event.preventDefault();
     this.isSendingEmail = true;

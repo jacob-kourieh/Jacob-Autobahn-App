@@ -25,6 +25,7 @@ export class RoadWorksComponent implements OnInit {
     );
   }
 
+  // Fetches the list of roads from the API.
   ngOnInit(): void {
     this.apiService.getRoads().subscribe({
       next: (data) => {
@@ -34,6 +35,8 @@ export class RoadWorksComponent implements OnInit {
     });
   }
 
+  // Called when a road is selected.
+  //Fetches road works for the selected road.
   onSelectRoad(): void {
     if (this.selectedRoad) {
       this.apiService.getRoadWorks(this.selectedRoad).subscribe({
@@ -48,19 +51,19 @@ export class RoadWorksComponent implements OnInit {
     }
   }
 
+  // Filters the road location/names based on the input value.
   private _filterRoadNames(value: string): string[] {
     const filterValue = value.toLowerCase();
     let filtered = this.roadWorks
       .map((condition) => condition.title)
       .filter((title) => title.toLowerCase().includes(filterValue));
-
     if (filtered.length === 0) {
       filtered = ['No matches found'];
     }
-
     return filtered;
   }
 
+  // Sets the filtered roadworks when a specific location/road name is selected.
   onRoadNameSelect(selectedName: string): void {
     if (selectedName === 'No matches found') {
       this.filteredWorks = [];
@@ -71,6 +74,7 @@ export class RoadWorksComponent implements OnInit {
     }
   }
 
+  // Clears the filter input and resets the filtered roadworks.
   clearFilter(event: MouseEvent): void {
     event.stopPropagation();
     this.roadNameControl.setValue('');
