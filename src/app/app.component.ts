@@ -10,7 +10,6 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Autobahn App';
   isHandset: boolean = false;
   currentUrl: string = '';
 
