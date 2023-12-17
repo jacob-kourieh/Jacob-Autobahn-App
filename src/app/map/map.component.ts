@@ -35,17 +35,13 @@ export class MapComponent implements OnInit {
   ) {}
 
   // Initializes the map when the component is loaded.
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.L = await import('leaflet');
-      this.initializeMap();
-      this.loadRoads();
-      this.selectedRoad.valueChanges.subscribe((value) => {
-        if (value) {
-          this.activeButton = null;
-          this.clearMarkers();
-          this.isDataLoaded = false;
-        }
+      import('leaflet').then((L) => {
+        this.L = L.default;
+        this.initializeMap();
+        this.loadRoads();
+        this.setupRoadSelectionListener();
       });
     }
   }
@@ -75,28 +71,22 @@ export class MapComponent implements OnInit {
   }
 
   // Fetches the list of roads from the API.
-  loadRoads(): void {
+  private loadRoads(): void {
     this.apiService.getRoads().subscribe({
-      next: (data) => {
-        this.roads = data.roads;
-      },
-      error: (error) => {
-        console.error('Error fetching roads:', error);
-      },
+      next: (data) => (this.roads = data.roads),
+      error: (error) => console.error('Error fetching roads:', error),
     });
   }
 
   // Removes all markers from the map.
-  clearMarkers(): void {
-    if (this.markers && this.markers.length) {
-      this.markers.forEach((marker) => marker.remove());
-      this.markers = [];
-    }
+  private clearMarkers(): void {
+    this.markers.forEach((marker) => marker.remove());
+    this.markers = [];
   }
 
   // Zooms into the map and sets markers based on provided data.
   private zoomAndSetMarkers(data: any[], coordinateKey: string): void {
-    if (data.length > 0) {
+    if (data.length > 0 && this.map) {
       const firstLocation = data[0][coordinateKey];
       this.map.setView(
         [parseFloat(firstLocation.lat), parseFloat(firstLocation.long)],
@@ -113,6 +103,17 @@ export class MapComponent implements OnInit {
       });
     }
     this.isDataLoaded = true;
+  }
+
+  //Sets up a listener for changes in the selected road.
+  private setupRoadSelectionListener(): void {
+    this.selectedRoad.valueChanges.subscribe((value) => {
+      if (value) {
+        this.activeButton = null;
+        this.clearMarkers();
+        this.isDataLoaded = false;
+      }
+    });
   }
 
   // Loads parking lorries on the map for the selected road.
