@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import emailjs from 'emailjs-com';
-import { emailJsConfig } from '../../environments/emailjs-config';
 
 @Component({
   selector: 'app-contact',
@@ -10,19 +9,27 @@ import { emailJsConfig } from '../../environments/emailjs-config';
 export class ContactComponent {
   isSendingEmail = false;
 
-  // Initializes emailjs with the provided user ID.
+  private emailJsConfig = {
+    user_id: 'CqsjiW6hHD_LdRD5P',
+    service_id: 'default_service',
+    template_id: 'template_5cw4bqv',
+  };
+
   constructor() {
-    emailjs.init(emailJsConfig.user_id);
+    emailjs.init(this.emailJsConfig.user_id);
   }
 
-  // Handles the email sending process when the form is submitted.
   sendEmail(event: Event) {
     event.preventDefault();
     this.isSendingEmail = true;
     const form = event.target as HTMLFormElement;
 
     emailjs
-      .sendForm(emailJsConfig.service_id, emailJsConfig.template_id, form)
+      .sendForm(
+        this.emailJsConfig.service_id,
+        this.emailJsConfig.template_id,
+        form
+      )
       .then(
         () => {
           alert('Email successfully sent!');
