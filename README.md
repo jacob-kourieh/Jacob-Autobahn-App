@@ -45,6 +45,10 @@ Navigate the app using the side panel. Explore the roadworks information, intera
 
 ---
 
-Authored by [Jacob Kourieh](http://www.jacob-kourieh.com).
+Authored by [Jacob Kourieh](http://www.jacob-kourieh.com)
+
+---
+
+Live Demo: [Autobahn App](https://autobahn-app.vercel.app/)
 
 ---
