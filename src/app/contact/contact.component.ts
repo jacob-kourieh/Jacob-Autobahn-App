@@ -15,7 +15,6 @@ export class ContactComponent {
     template_id: 'template_5cw4bqv',
   };
 
-  // Initializes emailjs with the provided user ID.
   constructor() {
     emailjs.init(this.emailJsConfig.user_id);
   }
