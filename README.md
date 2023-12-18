@@ -1,27 +1,51 @@
-# Jacob Autobahn App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+# Autobahn App
 
-## Development server
+## Introduction
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Welcome to the Autobahn App, a application designed to provide real-time updates and detailed information about the German Autobahn network. Developed for travelers and commuters, my app ensures you have the latest information on road conditions, roadworks, parking, and electric charging stations.
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Real-Time Roadworks Information**: Stay updated with the latest roadworks and road conditions.
+- **Interactive Map**: Discover parking lorries and electric charging stations on the Autobahn.
+- **User-Friendly Interface**: Developed using Angular and Angular Material for a seamless user experience.
+- **Responsive Design**: Functional and stylish on every screen size.
+- **Contact Form**: Easily reach out to me through the app for inquiries or feedback.
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+- Docker and Docker Compose installed on your system.
+- Git for cloning the repository.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Installation
 
-## Running end-to-end tests
+1. **Clone the Repository**: 
+   ```javascript
+   git clone https://github.com/jacob-kourieh/Jacob-Autobahn-App
+   ```
+2. **Run Docker Compose**: In the project's root directory, run:
+   ```javascript
+   docker-compose up
+   ```
+3. **Access the Application**: Open your web browser and visit `http://localhost:4200`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Usage
 
-## Further help
+Navigate the app using the side panel. Explore the roadworks information, interact with the map, learn about the app in the About section, or contact us as needed.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Technologies Used
+
+- **Angular**: For robust front-end development.
+- **Angular Material**: For sleek UI components.
+- **Leaflet**: For dynamic, interactive maps.
+- **Docker**: For streamlined deployment and containerization.
+
+
+---
+
+Authored by [Jacob Kourieh](http://www.jacob-kourieh.com).
+
+---
