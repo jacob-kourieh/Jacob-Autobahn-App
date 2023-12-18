@@ -1,4 +1,3 @@
-
 # Autobahn App
 
 ## Introduction
