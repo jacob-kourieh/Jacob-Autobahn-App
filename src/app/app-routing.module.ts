@@ -5,12 +5,14 @@ import { RoadWorksComponent } from './roadworks/roadworks.component';
 import { MapComponent } from './map/map.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { LiveMapComponent } from './live-map/live-map.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'roadworks', component: RoadWorksComponent },
   { path: 'map', component: MapComponent },
+  { path: 'live-map', component: LiveMapComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
 ];

@@ -24,6 +24,7 @@ export class AppComponent {
       icon: 'assets/roadwork.png',
     },
     { path: '/map', label: 'Map', icon: 'assets/map.png' },
+    { path: '/live-map', label: 'Live Map (Beta)', icon: 'assets/map.png' },
     { path: '/about', label: 'About', icon: 'assets/about.png' },
     { path: '/contact', label: 'Contact', icon: 'assets/contact.png' },
   ];

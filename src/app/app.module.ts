@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LiveMapComponent } from './live-map/live-map.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MapComponent,
     AboutComponent,
     ContactComponent,
+    LiveMapComponent,
   ],
   imports: [
     BrowserModule,
