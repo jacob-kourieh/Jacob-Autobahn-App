@@ -20,9 +20,71 @@ mat-sidenav-content {
   padding: 20px;
 }
 
+/* Global icon style */
+.map-icon-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.map-icon {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+}
+
 /* Responsive Styles */
 @media (max-width: 600px) {
   .common-container {
     padding: 10px;
   }
 }
+
+
+.search-control {
+  position: absolute;
+  /* top: -1px; */
+  left: -199px;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.65);
+  z-index: 1000;
+}
+
+.search-input {
+  padding: 5px;
+  margin-right: 5px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+}
+
+.search-button {
+  background-color: #257eca;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.search-control .search-results {
+  /* Dropdown style */
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.search-control .clear-button {
+  /* Clear button style */
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+
