@@ -4,7 +4,7 @@
 
 Welcome to the Autobahn App, a application designed to provide real-time updates and detailed information about the German Autobahn network. Developed for travelers and commuters, my app ensures you have the latest information on road conditions, roadworks, parking, and electric charging stations.
 
-## Features
+## Features 
 
 - **Real-Time Roadworks Information**: Stay updated with the latest roadworks and road conditions.
 - **Interactive Map**: Discover parking lorries and electric charging stations on the Autobahn.
